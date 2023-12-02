@@ -18,26 +18,39 @@ jobs:
       run:
         working-directory: ./TimeTac.API
 
+    strategy:
+      matrix:
+        dotnet-version: [ '6.0.x' ]
+
     steps:
       - uses: actions/checkout@v4
 
       - name: Set up .NET Core
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: '6.0.x'
-          include-prerelease: true
-
+          dotnet-version: ${{ matrix.dotnet-version }}
+      - name: Restore dependencies
+        run: dotnet restore
       - name: Build with dotnet
-        run: dotnet build --configuration Release
+        run: dotnet build --no-restore
 
-      - name: dotnet publish
-        run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
-
-      - name: Upload artifact for deployment job
+      - name: Test
+        run: dotnet test --logger trx --results-directory "TestResults-${{ matrix.dotnet-version }}"
+      - name: Upload dotnet test results
         uses: actions/upload-artifact@v3
         with:
-          name: .net-app
-          path: ${{env.DOTNET_ROOT}}/myapp
+          name: dotnet-results-${{ matrix.dotnet-version }}
+          path: TestResults-${{ matrix.dotnet-version }}
+        if: ${{ always() }}
+
+      # - name: dotnet publish
+      #   run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
+
+      # - name: Upload artifact for deployment job
+      #   uses: actions/upload-artifact@v3
+      #   with:
+      #     name: .net-app
+      #     path: ${{env.DOTNET_ROOT}}/myapp
 
   # deploy:
   #   runs-on: windows-latest
