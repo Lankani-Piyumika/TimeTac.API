@@ -5,10 +5,8 @@ name: Build ASP.Net Core app to Azure Web App - TimeTac
 
 on:
   push:
-    branches:
-      - main
-  pull_request:
-    branches: [ "main" ]
+    pull_request:
+      branches: [ "main" ]
   workflow_dispatch:
 
 jobs:
