@@ -10,10 +10,6 @@ on:
 jobs:
   deploy:
     runs-on: windows-latest
-    defaults:
-      run:
-        working-directory: ./TimeTac.API
-    needs: build
     environment:
       name: 'Production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
