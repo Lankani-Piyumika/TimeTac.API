@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "dgSpecHash": "tvrxXuynx+lpWLr4Q8m8Dh0r9Qys4qSZEJDbQxcKihzxfvPkwEx9/0YhYUFtQMuwFHNF/FMtwKtmQW/qLB2qUw==",
+  "success": false,
+  "projectFilePath": "F:\\Mine\\TimeTac\\TimeTac.API\\TimeTac.API\\TimeTac.API.csproj",
+  "expectedPackageFiles": [],
+  "logs": [
+    {
+      "code": "NU1101",
+      "level": "Error",
+      "message": "Unable to find package Swashbuckle.AspNetCore. No packages exist with this id in source(s): Microsoft Visual Studio Offline Packages",
+      "libraryId": "Swashbuckle.AspNetCore",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    }
+  ]
+}
