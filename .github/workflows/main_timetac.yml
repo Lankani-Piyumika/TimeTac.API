@@ -14,9 +14,9 @@ jobs:
   build:
     runs-on: windows-latest
 
-    defaults:
-      run:
-        working-directory: ./TimeTac.API
+    # defaults:
+    #   run:
+    #     working-directory: ./TimeTac.API
 
     steps:
       - uses: actions/checkout@v4
