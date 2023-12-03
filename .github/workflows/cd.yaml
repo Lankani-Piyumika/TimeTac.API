@@ -56,4 +56,4 @@ jobs:
           app-name: 'TimeTac'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_057D3572147943AE93EC0ECC078CE19C }}
-          package: .
+          package: ./TimeTac.API
