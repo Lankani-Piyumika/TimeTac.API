@@ -24,8 +24,18 @@ jobs:
           dotnet-version: '6.0.x'
           include-prerelease: true
 
+      - name: Set up dependency caching for faster builds
+        uses: actions/cache@v3
+        with:
+          path: ~/.nuget/packages
+          key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-nuget-
+
       - name: Build with dotnet
-        run: dotnet build --configuration Release
+        run: | 
+          dotnet restore
+          dotnet build --configuration Release
 
       - name: dotnet publish
         run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
@@ -56,4 +66,4 @@ jobs:
           app-name: 'TimeTac'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_057D3572147943AE93EC0ECC078CE19C }}
-          package: ./TimeTac.API
+          package: .
