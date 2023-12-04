@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "f3fkAWfJSac7Y5kQKKsB+kKOnDxStJ6CpFJIWBqLvro=",
+  "Source": "TimeTac.API",
+  "BasePath": "_content/TimeTac.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
